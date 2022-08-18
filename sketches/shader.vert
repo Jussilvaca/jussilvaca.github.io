@@ -21,7 +21,7 @@ attribute vec4 aVertexColor;
 
 // The vertex shader should project the vertex position into clip space:
 // vertex_clipspace = vertex * projection * view * model (see the gl_Position below)
-// Details here: http://visualcomputing.github.io/Transformations
+// Details here: http://jussilvaca.github.io/Transformations
 
 // Either a perspective or an orthographic projection
 uniform mat4 uProjectionMatrix;
