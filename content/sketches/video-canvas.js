@@ -3,7 +3,7 @@ let fingers;
 function setup() {
   createCanvas(710, 400);
   // specify multiple formats for different browsers
-  fingers = createVideo(['/sketches/fingers.mov', '/sketches/fingers.webm']);
+  fingers = createVideo(['/assets/video/fingers.mov', '/assets/video/fingers.webm']);
   fingers.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
   // instead
