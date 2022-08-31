@@ -2,6 +2,6 @@
 headless: true
 ---
 
-- **Workshops**
-- [Illusions] ({{<relref "/docs/workshops/illusions">}})
+- **Talleres**
+- [Ilusiones] ({{<relref "/docs/talleres/ilusiones">}})
 <br />
