@@ -22,6 +22,7 @@ let images = [];
 let canvasSize = 600;
 let kernelSelect = 0;
 let imageSelector = 0;
+let brightness = 1;
 
 function preload() {
     currFont = loadFont("/assets/font/Lato-Regular.ttf");
@@ -103,10 +104,11 @@ function getConvolution(pixelX, pixelY) {
         b += images[imageSelector].pixels[location + 2] * kernel[i];
     }
 
+
     return {
-        r: constrain(r, 0, 255),
-        g: constrain(g, 0, 255),
-        b: constrain(b, 0, 255),
+        r: constrain(r * brightness, 0, 255),
+        g: constrain(g * brightness, 0, 255),
+        b: constrain(b * brightness, 0, 255),
     };
 }
 
@@ -128,6 +130,15 @@ function convolveImage() {
 
     stroke(300, 100, 80);
     images[imageSelector].updatePixels();
+}
+
+function control_brightness(isDecreasing) {
+    if (isDecreasing) {
+        brightness -= 0.01;
+    }
+    else {
+        brightness += 0.01;
+    }
 }
 
 function switchKernel() {
@@ -202,6 +213,15 @@ function keyPressed() {
             break;
         case 'h':
             switchImage();
+            break;
+        case 'v':
+            control_brightness(true);
+            break;
+        case 'b':
+            control_brightness(false);
+            break;
+        case 'r':
+            resetImage();
             break;
     }
 }
