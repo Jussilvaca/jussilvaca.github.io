@@ -106,9 +106,9 @@ function getConvolution(pixelX, pixelY) {
 
 
     return {
-        r: constrain(r * brightness, 0, 255),
-        g: constrain(g * brightness, 0, 255),
-        b: constrain(b * brightness, 0, 255),
+        r: constrain(r, 0, 255),
+        g: constrain(g, 0, 255),
+        b: constrain(b, 0, 255),
     };
 }
 
@@ -134,11 +134,24 @@ function convolveImage() {
 
 function control_brightness(isDecreasing) {
     if (isDecreasing) {
-        brightness -= 0.01;
+        brightness = 0.99;
     }
     else {
-        brightness += 0.01;
+        brightness = 1.01;
     }
+
+    for (let x = 1; x < images[imageSelector].width - 1; x++) {
+        for (let y = 1; y < images[imageSelector].height - 1; y++) {
+            let position = position = (x + y * images[imageSelector].width) * 4;
+
+            images[imageSelector].pixels[position] = images[imageSelector].pixels[position] * brightness;
+            images[imageSelector].pixels[position + 1] = images[imageSelector].pixels[position + 1] * brightness;
+            images[imageSelector].pixels[position + 2] = images[imageSelector].pixels[position + 2] * brightness;
+            images[imageSelector].pixels[position + 3] = images[imageSelector].pixels[position + 3] * brightness;
+        }
+    }
+
+    images[imageSelector].updatePixels();
 }
 
 function switchKernel() {
