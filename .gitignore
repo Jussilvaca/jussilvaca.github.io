@@ -5,3 +5,5 @@
 # Logs
 *.log
 .hugo_build.lock
+
+.vscode/
