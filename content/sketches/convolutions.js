@@ -7,16 +7,18 @@ let verticalEdge = [-3, -10, -3, 0, 0, 0, 3, 10, 3];
 let sobelKernel = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
 let imagesNames = [
     '/assets/image/hero.jpeg',
-    '/assets/image/mandrill.png',
-    '/assets/image/lenna.png',
+    '/assets/image/cave.jpeg',
+    '/assets/image/figth.jpeg',
+    '/assets/image/rain.jpeg',
+    '/assets/image/sword.jpeg',
 ];
 
 let histogram;
-let kernel;
 let showHistogram;
 let textMessage;
 let currFont;
 
+let kernel = [0, 0, 0, 0, 1, 0, 0, 0, 0];
 let files = [];
 let images = [];
 let canvasSize = 600;
@@ -39,11 +41,12 @@ function preload() {
 function setup() {
     createCanvas(canvasSize, canvasSize);
     pixelDensity(1);
-    
+
     for (let i = 0; i < imagesNames.length; i++) {
         files[i].resize(0, canvasSize);
         images[i].resize(0, canvasSize);
     }
+    convolveImage();
 }
 
 function draw() {
@@ -134,15 +137,15 @@ function convolveImage() {
 
 function control_brightness(isDecreasing) {
     if (isDecreasing) {
-        brightness = 0.99;
+        brightness = 0.9;
     }
     else {
-        brightness = 1.01;
+        brightness = 1.1;
     }
 
     for (let x = 1; x < images[imageSelector].width - 1; x++) {
         for (let y = 1; y < images[imageSelector].height - 1; y++) {
-            let position = position = (x + y * images[imageSelector].width) * 4;
+            let position = (x + y * images[imageSelector].width) * 4;
 
             images[imageSelector].pixels[position] = images[imageSelector].pixels[position] * brightness;
             images[imageSelector].pixels[position + 1] = images[imageSelector].pixels[position + 1] * brightness;
@@ -203,12 +206,13 @@ function switchKernel() {
 function switchImage() {
     imageSelector++;
 
-    if (imageSelector >= 3) {
+    if (imageSelector >= imagesNames.length) {
         imageSelector = 0;
     }
 
     kernel = [0, 0, 0, 0, 1, 0, 0, 0, 0];
     textMessage = 'Original';
+    convolveImage();
     resetImage();
 }
 
