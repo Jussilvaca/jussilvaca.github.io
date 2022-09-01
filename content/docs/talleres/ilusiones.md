@@ -2,6 +2,14 @@
 
 ## Ilusiones Opticas
 
+Rectangulos en rotación
+
+{{<p5-iframe ver="1.4.2" sketch="/sketches/rotating_rectangles.js" >}}
+
+Rejilla Trapezoidal
+
+{{<p5-iframe ver="1.4.2" sketch="/sketches/trapezoidal_grid.js" >}}
+
 ## Kernels de imagenes
 
 {{< details "Shortcuts" >}}
