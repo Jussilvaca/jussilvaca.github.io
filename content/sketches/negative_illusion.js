@@ -4,7 +4,7 @@ var input;
 var img;
 var lastImg;
 function setup() { 
-  createCanvas(800, 800);
+  createCanvas(770, 560);
   input = createFileInput(handleFile);
   input.position(0, 0);
 } 
@@ -67,9 +67,9 @@ function draw() {
       stroke('white')
       strokeWeight(2)
       fill('black')
-      text("¿Vez colores?\nEsta imagen es en blanco y negro", width/2, height*0.9);
+      text("¿Vez colores?\nEsta imagen es en blanco y negro", width/2, height*0.84);
     }
-    text(timer, width/2, height*0.8);
+    text(timer, width/2, height*0.70);
     let colorPoint = inverseColor(color(get (width/2, height*0.3)))
     stroke('colorPoint'); // Change the color
     strokeWeight(10); // Make the points 10 pixels in
