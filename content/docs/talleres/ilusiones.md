@@ -1,18 +1,22 @@
-# Ilusiones
-<!--
-## Ilusiones Opticas
-
-Rectangulos en rotación
-
-{{<p5-iframe ver="1.4.2" sketch="/sketches/rotating_rectangles.js" >}}
-
-Rejilla Trapezoidal
-
-{{<p5-iframe ver="1.4.2" sketch="/sketches/trapezoidal_grid.js" >}}
--->
-
-
 # Kernels de imagenes
+
+## Kernels de imagenes
+
+
+{{< details "Shortcuts" >}}
+| Tecla | Description |
+| -------- | ----------- |
+| F | Cambiar mascara |
+| G | Mostrar histograma |
+| H | Cambiar imagen |
+| V | Disminuir brillo |
+| B | Aumentar brillo |
+| R | Resetear imagen |
+{{< /details >}}
+
+{{<p5-iframe ver="1.4.2" sketch="/sketches/convolutions.js" >}}
+
+# Ilusiones
 
 ## **Ver color en una imagen a blanco y negro**
 
@@ -32,22 +36,6 @@ Nosotros tenemos tres tipos de conos en nuestros ojos, sensibles a las ondas de 
 
 https://verne.elpais.com/verne/2015/11/20/articulo/1448008967_394846.html
 
-
-## Kernels de imagenes
-
-
-{{< details "Shortcuts" >}}
-| Tecla | Description |
-| -------- | ----------- |
-| F | Cambiar mascara |
-| G | Mostrar histograma |
-| H | Cambiar imagen |
-| V | Disminuir brillo |
-| B | Aumentar brillo |
-| R | Resetear imagen |
-{{< /details >}}
-
-{{<p5-iframe ver="1.4.2" sketch="/sketches/convolutions.js" >}}
 
 # Fenómeno Phi (φ)
 El término fenómeno phi se usa en un sentido estricto para un movimiento aparente que se observa si dos estímulos ópticos cercanos se presentan en alternancia con una frecuencia relativamente alta.
@@ -173,7 +161,11 @@ Let `rgb1` and `rgb2` be two `rgb` colors. What `rgb1 * rgb2` would mean?
 
 Sabemos que los colores en formato RGB están representados por valores de 0 a 255 en cada uno de los canales (R=Red, G=Green, B=Blue), al ser valores numéricos que implicación su multiplicación.
 
+Para realizar la multiplicacion de valores de RGB estos primero son normalizados a valores entre 0 a 1, por ejemplo un amarillo (255,255,0) en su forma normalizada seria (1,1,0), para operarlo con otro color como el azul cyan (0, 255, 255), su forma normalizada es (0,1,1), al multiplicar estos colores componente a componente.
 
+(1, 1, 0)*(0, 1, 1)= (1 * 0, 1  * 1, 0 * 1 ) 
+
+De aqui obtendriamos el color verde que seria (0,1,0) , es decir (0, 255,0)
 
 {{<p5-iframe ver="1.4.2" sketch="/sketches/color_multiply.js" width="420" height="460">}}
 
