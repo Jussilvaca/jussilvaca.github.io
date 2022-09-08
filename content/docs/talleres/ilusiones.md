@@ -1,5 +1,5 @@
 # Ilusiones
-
+<!--
 ## Ilusiones Opticas
 
 Rectangulos en rotación
@@ -9,12 +9,9 @@ Rectangulos en rotación
 Rejilla Trapezoidal
 
 {{<p5-iframe ver="1.4.2" sketch="/sketches/trapezoidal_grid.js" >}}
+-->
 
-Imagen en Negativo
-
-{{<p5-iframe ver="1.4.2" sketch="/sketches/negative_illusion.js" >}}
-
-## Kernels de imagenes
+# Kernels de imagenes
 
 {{< details "Shortcuts" >}}
 | Tecla | Description |
@@ -28,6 +25,10 @@ Imagen en Negativo
 {{< /details >}}
 
 {{<p5-iframe ver="1.4.2" sketch="/sketches/convolutions.js" >}}
+
+# Imagen en Negativo
+
+{{<p5-iframe ver="1.4.2" sketch="/sketches/negative_illusion.js" >}}
 
 
 
@@ -65,7 +66,7 @@ Se cree que la ilusión de phi inversa es de hecho efectos de brillo, que ocurre
 ## Otro ejemplo
 
 <img src='/assets/gif/reversePhi2.gif' width="600" height="300" /> 
-
+<!--
 <ul style="list-style-image:url('/assets/image/icon.png');">
   <li> Primer elemento</li>
   <li> Segundo elemento</li>
@@ -74,6 +75,7 @@ Se cree que la ilusión de phi inversa es de hecho efectos de brillo, que ocurre
   <li> Quinto elemento</li>
   <li> Sexto elemento</li>
 </ul>
+-->
 
 Referencias: </br>
 https://michaelbach.de/ot/mot-reversePhi/index.html </br>
@@ -144,7 +146,4 @@ https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_Poggendorff </br>
 http://www.abc-people.com/illusion/illusion-4.htm </br>
 https://www.newworldencyclopedia.org/entry/Poggendorff_illusion </br>
 
-
-
-{{<p5-iframe ver="1.4.2" sketch="/sketches/sound_Illution.js">}}
 

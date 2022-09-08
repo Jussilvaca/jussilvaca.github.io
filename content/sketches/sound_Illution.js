@@ -1,63 +1,70 @@
+let song;
 
-// Adapted from Learning Processing by Daniel Shiffman
-// http://www.learningprocessing.com
-// Doorbell sample by Corsica_S via freesound.org,
-// Creative Commons BY 3.0
 
-// A Class to describe a "doorbell" (really a button)
-class Doorbell {
-  constructor(x_, y_, r_) {
-    // Location and size
-    this.x = x_;
-    this.y = y_;
-    this.r = r_;
-  }
-  // Is a point inside the doorbell? (used for mouse rollover, etc.)
-  contains(mx, my) {
-    return dist(mx, my, this.x, this.y) < this.r;
-  }
+let flag = 0;
 
-  // Show the doorbell (hardcoded colors, could be improved)
-  display(mx, my) {
-    if (this.contains(mx, my)) {
-      fill(100);
-    } else {
-      fill(175);
-    }
-    stroke(0);
-    strokeWeight(4);
-    ellipseMode(RADIUS);
-    ellipse(this.x, this.y, this.r, this.r);
-  }
+function setup(){
+  createCanvas(770,570);
+  fill(0);
+
+  song = loadSound('/assets/sound/sound.mp3');
+  background(255, 0, 0);
+  //text('Click to Play!', width / 2-(30), height / 2);
+ 
 }
 
-// A sound file object
-let dingdong;
 
-// A doorbell object (that will trigger the sound)
-let doorbell;
-
-function setup() {
-  createCanvas(200, 200);
-
-  // Load the sound file.
-  // We have included both an MP3 and an OGG version.
-  soundFormats('mp3', 'ogg');
-  dingdong = loadSound('/assets/sound/sound.mp3');
-
-  // Create a new doorbell
-  doorbell = new Doorbell(width / 2, height / 2, 32);
+function draw(){
+ 
+if(mouseIsPressed){
+  song.play();
+  wait(2000); 
+  redraw(5);
+  circle(width / 2, height / 2, 50);
+  redraw(5);
+  wait(2000);
+  redraw(5);
+  circle(width / 2, height / 2, 70);
+ 
+  
 }
 
-function draw() {
-  background(255);
-  // Show the doorbell
-  doorbell.display(mouseX, mouseY);
-}
+  
 
-function mousePressed() {
-  // If the user clicks on the doorbell, play the sound!
-  if (doorbell.contains(mouseX, mouseY)) {
-    dingdong.play();
+/*
+ 
+
+  if (song.isPlaying()) {
+    song.stop();
+    background(255, 0, 0);
+    text('Click to Play!', width / 2-(30), height / 2);
+  } else {
+    background(0, 255, 0);
+    song.play();
+    
+    wait(2000);
+    background(0, 255, 0);
+    wait(2000);
+    circle(width / 2, height / 2, 50);
+    wait(2000);
+    circle(width / 2, height / 2, 50);
   }
+*/
+
 }
+
+function wait(time)
+{
+  start = millis()
+  do
+  {
+    current = millis();
+  }
+  while(current < start + time)
+}
+
+  
+
+
+
+  
