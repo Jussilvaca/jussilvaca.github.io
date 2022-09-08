@@ -1,12 +1,14 @@
-const waitTime = 15;
+const waitTime = 20;
 let timer = waitTime;
 var input;
 var img;
 var lastImg;
+let loadOriginal = 0
 function setup() { 
   createCanvas(770, 560);
   input = createFileInput(handleFile);
-  input.position(0, 0);
+  input.position(6, height+8);
+  rectMode(CENTER)
 } 
 
 function draw() { 
@@ -42,7 +44,7 @@ function draw() {
         }
       updatePixels();
       stroke('black')
-      strokeWeight(2)
+      strokeWeight(3)
       fill('white')
       text("Mira el punto fijamente", width/2, height*0.9);
     }
@@ -65,31 +67,47 @@ function draw() {
       }
       updatePixels();
       stroke('white')
-      strokeWeight(2)
+      strokeWeight(3)
       fill('black')
-      text("¿Vez colores?\nEsta imagen es en blanco y negro", width/2, height*0.84);
+      text("¿Ves colores?", width/2, height*0.84);
     }
     text(timer, width/2, height*0.70);
-    let colorPoint = inverseColor(color(get (width/2, height*0.3)))
-    stroke('colorPoint'); // Change the color
+    push()
+    translate(770/2,200)
+    rotate(frameCount/60)
+    fill('#0007FF')
+    noStroke()
+    rect(0, 0, 20, 10)
+    rect(0, 0, 10, 20)
+    pop()
     strokeWeight(10); // Make the points 10 pixels in
-    point(width/2, height*0.3)
+    if(loadOriginal){
+      image(lastImg, 0, 0, width, height);
+      stroke('white')
+      strokeWeight(3)
+      fill('black')
+      text("Imagen Original", width/2, height*0.84);
+    }
+    
   }
 }
 
 function handleFile(file) {
   print(file);
   if (file.type === 'image') {
-    img = createImg(file.data);
+    img = createImg(file.data,'');
     img.hide();
   }
 }
-
-function inverseColor(r,g,b){
-  
-  r = 255 - r; //get the mathmatical inverse
-  g = 255 - g; //get the mathmatical inverse
-  b = 255 - b; //get the mathmatical inverse
-  
-  return color(r,g,b); //return a p5 color function containing our inverse color!
+function keyPressed() {
+    switch (key) {
+        case 'r':
+            timer = waitTime;
+            loadOriginal = 0;
+            break;
+        case 'o':
+            loadOriginal = 1;
+            timer = 0;
+            break;r
+    }
 }
