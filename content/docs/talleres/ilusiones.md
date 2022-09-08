@@ -10,7 +10,7 @@ Rejilla Trapezoidal
 
 {{<p5-iframe ver="1.4.2" sketch="/sketches/trapezoidal_grid.js" >}}
 
-Imagen en Negativo
+### Imagen en Negativo
 
 {{<p5-iframe ver="1.4.2" sketch="/sketches/negative_illusion.js" >}}
 
