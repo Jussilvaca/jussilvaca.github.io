@@ -75,7 +75,7 @@ function draw() {
     push()
     translate(770/2,200)
     rotate(frameCount/60)
-    fill('#FF0000')
+    fill('#0007FF')
     noStroke()
     rect(0, 0, 20, 10)
     rect(0, 0, 10, 20)
