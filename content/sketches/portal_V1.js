@@ -134,14 +134,6 @@ function draw() {
     }
     portalOnfbo1.render(fbo1, 0, fbo2TextPort);
     portalOnfbo2.render(fbo2, 1, fbo1TextPort);
-
-    if (press) {
-        // console.log("Accediste a la informacion de los Player1");
-        console.log("Dis Mono 1: " + playerOnfbo1.playerDis);
-        console.log("Angulo Mono 1: " + angle1);
-        console.log("Angulo Mono 2: " + angle2);
-        press = 0;
-    }
     angle += 0.007
     if (teleportedFbo2) {
         cam1.setViewport([0, 0, 600, 600]);
