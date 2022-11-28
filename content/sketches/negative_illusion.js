@@ -108,6 +108,6 @@ function keyPressed() {
         case 'o':
             loadOriginal = 1;
             timer = 0;
-            break;r
+            break;
     }
 }
