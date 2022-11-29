@@ -142,4 +142,249 @@ void main() {
 
 ## Sketch de UV Screen
 
+{{< details title="uv_screen.js" open=false >}}
+```js
+let easycam;
+let uvShader;
+let opacity;
+let mode;
+
+function preload() {
+    // Define geometry in world space (i.e., matrices: Tree.pmvMatrix).
+    // The projection and modelview matrices may be emitted separately
+    // (i.e., matrices: Tree.pMatrix | Tree.mvMatrix), which actually
+    // leads to the same gl_Position result.
+    // Interpolate only texture coordinates (i.e., varyings: Tree.texcoords2).
+    // see: https://github.com/VisualComputing/p5.treegl#handling
+    uvShader = readShader('/assets/shader/uv_alpha.frag',
+        { matrices: Tree.pmvMatrix, varyings: Tree.texcoords2 });
+}
+
+function setup() {
+    createCanvas(600, 600, WEBGL);
+    // easycam stuff
+    let state = {
+        distance: 250,           // scalar
+        center: [0, 0, 0],       // vector
+        rotation: [0, 0, 0, 1],  // quaternion
+    };
+    easycam = createEasyCam();
+    easycam.state_reset = state;   // state to use on reset (double-click/tap)
+    easycam.setState(state, 2000); // now animate to that state
+    textureMode(NORMAL);
+    opacity = createSlider(0, 1, 0.5, 0.01);
+    opacity.position(10, 25);
+    opacity.style('width', '280px');
+    mode = createSelect();
+    mode.position(10, 10);
+    mode.option('quad');
+    mode.option('ellipse');
+    mode.option('triangleUP');
+    mode.option('triangleDOWN');
+    mode.selected('uvShaderBlueX');
+    mode.changed(() => { console.log("Change"); });
+}
+
+function draw() {
+    background(200);
+    // reset shader so that the default shader is used to render the 3D scene
+    resetShader();
+    // world space scene
+    axes();
+    grid();
+    translate(0, -70);
+    rotateY(0.5);
+    fill(color(255, 0, 255, 125));
+    box(30, 50);
+    translate(70, 70);
+    fill(color(0, 255, 255, 125));
+    sphere(30, 50);
+    // use custom shader
+    shader(uvShader);
+    uvShader.setUniform('opacity', opacity.value());
+    // screen-space quad (i.e., x ∈ [0..width] and y ∈ [0..height])
+    // see: https://github.com/VisualComputing/p5.treegl#heads-up-display
+    loadFigure(mode.value());
+}
+
+function mouseWheel(event) {
+    //comment to enable page scrolling
+    return false;
+}
+
+function loadFigure(value) {
+    if (value == 'quad') {
+        beginHUD();
+        noStroke();
+        quad(0, 0, width, 0, width, height, 0, height);
+        endHUD();
+    } else if (value == 'ellipse') {
+        beginHUD();
+        noStroke();
+        ellipse(width / 2, height / 2, width, height);
+        endHUD()
+    } else if (value == 'triangleUP') {
+        beginHUD();
+        noStroke();
+        triangle(0, 0, width, 0, width, height);
+        endHUD();
+    } else if (value == 'triangleDOWN') {
+        beginHUD();
+        noStroke();
+        triangle(0, 0, 0, height, width, height);
+        endHUD();
+    }
+}
+```
+{{< /details >}}
+
+{{< details title="uv_alpha.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+varying vec2 texcoords2;
+varying vec4 color4;
+// uniform is sent by the sketch
+uniform float opacity;
+
+void main() {
+  gl_FragColor = vec4(texcoords2.xy, 1.0 - texcoords2.x, opacity);
+}
+```
+{{< /details >}}
+
 {{< p5-iframe sketch="/sketches/uv_screen.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" lib2="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js" width="625" height="625" >}}
+
+## Sketch de Luma y Aritmetic Mean
+
+{{< details title="luma_mena.js" open=false >}}
+```js
+let lumaShader, meanShader;
+let img1, img2;
+let grey_scale, mode;
+
+function preload() {
+    lumaShader = readShader('/assets/shader/luma.frag', { varyings: Tree.texcoords2 });
+    meanShader = readShader('/assets/shader/mean.frag', { varyings: Tree.texcoords2 });
+    img1 = loadImage('/assets/image/fire.jpg');
+    img2 = loadImage('/assets/image/fire2.jpg');
+}
+
+function setup() {
+    createCanvas(600, 600, WEBGL);
+    noStroke();
+    textureMode(NORMAL);
+    shader(lumaShader);
+    mode = createSelect();
+    mode.position(10, 10);
+    mode.option('fire 1');
+    mode.option('fire 2');
+    mode.selected('fire 1');
+    mode.changed(() => { console.log("Change"); });
+    grey_scale = createSelect();
+    grey_scale.position(60, 10);
+    grey_scale.option('original');
+    grey_scale.option('luma');
+    grey_scale.option('average');
+    grey_scale.selected('original');
+    grey_scale.changed(() => { console.log("Change"); });
+}
+
+function draw() {
+    background(0);
+    loadShaderImage();
+}
+function loadShaderImage() {
+    if (mode.value() == 'fire 1') {
+        if (grey_scale.value() == 'luma') {
+            resetShader();
+            shader(lumaShader);
+            lumaShader.setUniform('texture', img1);
+            lumaShader.setUniform('grey_scale', true);
+        } else if (grey_scale.value() == 'average') {
+            resetShader();
+            shader(meanShader);
+            meanShader.setUniform('texture', img1);
+            meanShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(lumaShader);
+            lumaShader.setUniform('texture', img1);
+            lumaShader.setUniform('grey_scale', false);
+        }
+    } else if (mode.value() == 'fire 2') {
+
+        if (grey_scale.value() == 'luma') {
+            resetShader();
+            shader(lumaShader);
+            lumaShader.setUniform('texture', img2);
+            lumaShader.setUniform('grey_scale', true);
+        } else if (grey_scale.value() == 'average') {
+            resetShader();
+            shader(meanShader);
+            meanShader.setUniform('texture', img2);
+            meanShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(lumaShader);
+            lumaShader.setUniform('texture', img2);
+            lumaShader.setUniform('grey_scale', false);
+        }
+    }
+    quad(-width / 2, -height / 2, width / 2, -height / 2,
+        width / 2, height / 2, -width / 2, height / 2);
+}
+```
+{{< /details >}}
+
+{{< details title="luma.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+// uniforms are defined and sent by the sketch
+uniform bool grey_scale;
+uniform sampler2D texture;
+
+// interpolated texcoord (same name and type as in vertex shader)
+varying vec2 texcoords2;
+
+// returns luma of given texel
+float luma(vec3 texel) {
+  return 0.299 * texel.r + 0.587 * texel.g + 0.114 * texel.b;
+}
+
+void main() {
+  // texture2D(texture, texcoords2) samples texture at texcoords2 
+  // and returns the normalized texel color
+  vec4 texel = texture2D(texture, texcoords2);
+  gl_FragColor = grey_scale ? vec4((vec3(luma(texel.rgb))), 1.0) : texel;
+}
+```
+{{< /details >}}
+{{< details title="mean.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+// uniforms are defined and sent by the sketch
+uniform bool grey_scale;
+uniform sampler2D texture;
+
+// interpolated texcoord (same name and type as in vertex shader)
+varying vec2 texcoords2;
+
+// returns luma of given texel
+float luma(vec3 texel) {
+  return (texel.r + texel.g + texel.b)/3.0;
+}
+
+void main() {
+  // texture2D(texture, texcoords2) samples texture at texcoords2 
+  // and returns the normalized texel color
+  vec4 texel = texture2D(texture, texcoords2);
+  gl_FragColor = grey_scale ? vec4((vec3(luma(texel.rgb))), 1.0) : texel;
+}
+```
+{{< /details >}}
+
+
+{{< p5-iframe sketch="/sketches/Luma_Mean.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="625" height="625" >}}
