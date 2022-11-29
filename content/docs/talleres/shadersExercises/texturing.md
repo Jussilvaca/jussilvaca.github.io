@@ -386,5 +386,178 @@ void main() {
 ```
 {{< /details >}}
 
-
 {{< p5-iframe sketch="/sketches/Luma_Mean.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="625" height="625" >}}
+
+## Sketch de HSV
+
+{{< details title="hsv.js" open=false >}}
+```js
+let hsvShader;
+let img1, img2, img3, img4, img5;
+let grey_scale, mode;
+
+function preload() {
+    hsvShader = readShader('/assets/shader/hsv.frag', { varyings: Tree.texcoords2 });
+    img1 = loadImage('/assets/image/landscape1.jpg');
+    img2 = loadImage('/assets/image/landscape2.jpg');
+    img3 = loadImage('/assets/image/landscape3.jpg');
+    img4 = loadImage('/assets/image/landscape4.jpg');
+    img5 = loadImage('/assets/image/landscape5.jpg');
+    img1.resize(0, height);
+    img2.resize(0, height);
+    img3.resize(0, height);
+    img4.resize(0, height);
+    img5.resize(0, height);
+}
+
+function setup() {
+    createCanvas(600, 600, WEBGL);
+    noStroke();
+    textureMode(NORMAL);
+    mode = createSelect();
+    mode.position(10, 10);
+    mode.option('landscape 1');
+    mode.option('landscape 2');
+    mode.option('landscape 3');
+    mode.option('landscape 4');
+    mode.option('landscape 5');
+    mode.selected('landscape 1');
+    mode.changed(() => { console.log("Change"); });
+    grey_scale = createSelect();
+    grey_scale.position(110, 10);
+    grey_scale.option('original');
+    grey_scale.option('hsv');
+    grey_scale.selected('original');
+    grey_scale.changed(() => { console.log("Change"); });
+}
+
+function draw() {
+    background(0);
+    loadShaderImage();
+}
+function loadShaderImage() {
+    if (mode.value() == 'landscape 1') {
+        if (grey_scale.value() == 'hsv') {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img1);
+            hsvShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img1);
+            hsvShader.setUniform('grey_scale', false);
+        }
+    } else if (mode.value() == 'landscape 2') {
+        if (grey_scale.value() == 'hsv') {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img2);
+            hsvShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img2);
+            hsvShader.setUniform('grey_scale', false);
+        }
+    } else if (mode.value() == 'landscape 3') {
+        if (grey_scale.value() == 'hsv') {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img3);
+            hsvShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img3);
+            hsvShader.setUniform('grey_scale', false);
+        }
+    } else if (mode.value() == 'landscape 4') {
+        if (grey_scale.value() == 'hsv') {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img4);
+            hsvShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img4);
+            hsvShader.setUniform('grey_scale', false);
+        }
+    } else if (mode.value() == 'landscape 5') {
+        if (grey_scale.value() == 'hsv') {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img5);
+            hsvShader.setUniform('grey_scale', true);
+        } else {
+            resetShader();
+            shader(hsvShader);
+            hsvShader.setUniform('texture', img5);
+            hsvShader.setUniform('grey_scale', false);
+        }
+    }
+    quad(-width / 2, -height / 2, width / 2, -height / 2,
+        width / 2, height / 2, -width / 2, height / 2);
+}
+```
+{{< /details >}}
+
+{{< details title="hsv.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+// uniforms are defined and sent by the sketch
+uniform bool grey_scale;
+uniform sampler2D texture;
+
+// interpolated texcoord (same name and type as in vertex shader)
+varying vec2 texcoords2;
+
+float modI(float a,float b) {
+    float m=a-floor((a+0.5)/b)*b;
+    return floor(m+0.5);
+}
+
+vec3 hsv(vec3 c)
+{           
+    float rValor = c.r;
+    float gValor = c.g;
+    float bValor = c.b;
+
+    float maximo = max(max(rValor, gValor), bValor);
+    float minimo = min(max(rValor, gValor), bValor);
+
+    float h = 0.0;
+    if(maximo == rValor){
+        h = 60.0 * modI((gValor - bValor)/(maximo - minimo), 6.0);
+    }else if (maximo == gValor){
+        h = 60.0 * (((bValor - rValor) / (maximo - minimo)) + 2.0);
+    }else{
+        h = 60.0 * (((rValor - gValor) / (maximo - minimo)) + 4.0);
+    }
+
+    float s = 0.0;
+    if(maximo != 0.0){
+        s = (maximo - minimo) / maximo;
+    }else{
+        s = 0.0;
+    }
+
+    float v = maximo;
+
+    return vec3(h, s, v);
+
+}
+
+void main() {
+  // texture2D(texture, texcoords2) samples texture at texcoords2 
+  // and returns the normalized texel color
+  vec4 texel = texture2D(texture, texcoords2);
+  gl_FragColor = grey_scale ? vec4((vec3(hsv(texel.rgb))), 1.0) : texel;
+}
+```
+{{< /details >}}
+
+
+{{< p5-iframe sketch="/sketches/hsv.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="625" height="625" >}}

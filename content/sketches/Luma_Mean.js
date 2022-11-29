@@ -7,13 +7,14 @@ function preload() {
     meanShader = readShader('/assets/shader/mean.frag', { varyings: Tree.texcoords2 });
     img1 = loadImage('/assets/image/fire.jpg');
     img2 = loadImage('/assets/image/fire2.jpg');
+    img1.resize(0, height);
+    img2.resize(0, height);
 }
 
 function setup() {
     createCanvas(600, 600, WEBGL);
     noStroke();
     textureMode(NORMAL);
-    shader(lumaShader);
     mode = createSelect();
     mode.position(10, 10);
     mode.option('fire 1');
