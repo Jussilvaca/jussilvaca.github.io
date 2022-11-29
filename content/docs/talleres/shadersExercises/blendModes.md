@@ -631,3 +631,9 @@ function loadAShader(value) {
 }
 ```
 {{< /details >}}
+
+**Referencias**
+
+https://en.wikipedia.org/wiki/Blend_modes
+https://p5js.org/reference/#/p5/blendMode
+https://visualcomputing.github.io/docs/shaders/coloring/

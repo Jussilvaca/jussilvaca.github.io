@@ -561,3 +561,9 @@ void main() {
 
 
 {{< p5-iframe sketch="/sketches/hsv.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="625" height="625" >}}
+
+**Referencias**
+
+https://visualcomputing.github.io/docs/shaders/texturing/
+https://vcwork.github.io/project/docs/Entrega3/parte1/
+https://en.wikipedia.org/wiki/HSL_and_HSV
