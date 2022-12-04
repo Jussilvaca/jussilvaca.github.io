@@ -161,9 +161,12 @@ void main() {
 
 ## Sketch Blend AllModes
 
-Blend de dos colores haciendo uso de Shader (Todos los modos de Blend que hayamos podido implementar)
+Algunos ejemplos de Blend tomando como base dos colores haciendo uso de Shader.
 
 ## Blend Add
+Este modo de blend suma los valores de los pixeles de una capa con otra.
+En el caso en que los valores sean superiores a {{< katex >}} 1 {{< /katex >}} (En el caso de RGB) éste se mostrará en blanco.
+
 {{< details title="blendAdd.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -179,6 +182,9 @@ void main() {
 {{< /details >}}
 
 ## Blend Substract
+Este modo de blend resta los valores de píxeles de una capa con la otra.
+En caso de valores negativos, se muestra en negro.
+
 {{< details title="blendSubstract.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -194,6 +200,11 @@ void main() {
 {{< /details >}}
 
 ## Blend Divide
+Este blend divide los valores de píxeles de una capa con la otra. 
+Es útil para iluminar imágenes en especial con colores grisáceos.
+
+También es útil para eliminar tintes de color, ya que considerando que cualquier valor dividido por sí mismo es igual a {{< katex >}} 1.0 {{< /katex >}} , es decir, blanco.
+
 {{< details title="blendDivide.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -209,6 +220,17 @@ void main() {
 {{< /details >}}
 
 ## Blend Screen
+En este modo de blend los valores de los pixeles en las dos capas se invierten, se multiplican y posteriormente se vuelven a invertir.
+El resultado es opuesto al blend de multiplicación y como resultado se tendrá un color más brillante (siempre que una de las capas sea más oscura que blanco)
+
+{{< katex >}} f(a,b) = 1 - (1 - a)(1 - b) {{< /katex >}}
+
+Donde {{< katex >}} a{{< /katex >}} es la capa base y {{< katex >}} b{{< /katex >}} es la capa superior.
+
+Este tipo de blend tiene un resultado conmutativo.
+
+
+
 {{< details title="blendScreen.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -224,6 +246,20 @@ void main() {
 {{< /details >}}
 
 ## Blend Overlay
+El Overlay Blend es una combinación de Multiply blend y Screen blend.
+En donde: si la capa base es clara, la capa superior se vuelve más clara; si la capa base es oscura, la capa superior se vuelve más oscura; y no se ve afectada la capa superior si la capa base es gris.
+
+{{< katex >}} 
+f(a,b)= \left\{ \begin{array}{lcc}
+             2ab, &   si  & a < 0.5 \\
+             \\ 1 - 2(1 - a)(1 - b), &  si & x \geq  0,5 \\
+             \end{array}
+   \right.
+{{< /katex >}}
+
+
+Donde {{< katex >}} a{{< /katex >}} es la capa base y {{< katex >}} b{{< /katex >}} es la capa superior
+
 {{< details title="blendOverlay.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -262,6 +298,12 @@ void main  ()  {
 {{< /details >}}
 
 ## Blend SoftLight
+Está muy relacionado con Overlay blend y hay múltiples maneras de aplicarlo, en este caso se utiliza la fórmula :
+
+{{< katex >}} f_{pegtop}(a,b) = (1 - 2b)a² + 2ba{{< /katex >}}
+
+que es una interpolación lineal Multiply blend (para {{< katex >}} a = 0{{< /katex >}}) y Screen Blend ( para {{< katex >}} a = 1 {{< /katex >}}).
+
 {{< details title="blendSoftLight.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -277,6 +319,10 @@ void main() {
 {{< /details >}}
 
 ## Blend Darkness
+Sólo se toman los valores de los colores más oscuros, de modo que:
+
+{{< katex >}} C = min(A*factor,B) {{< /katex >}}
+
 {{< details title="blendDarkness.frag" open=false >}}
 ```GLSL
 precision mediump float;
@@ -292,6 +338,10 @@ void main() {
 {{< /details >}}
 
 ## Blend Lighten
+Sólo se toman los valores de los colores más claros, de modo que:
+
+{{< katex >}} C = max(A*factor,B) {{< /katex >}}
+
 {{< details title="blendLighten.frag" open=false >}}
 ```GLSL
 precision mediump float;
