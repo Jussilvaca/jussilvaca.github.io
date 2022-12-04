@@ -4,6 +4,9 @@ weight: 0
 
 ## Blend Modes (Operaciones con Colores)
 
+Los Blend Modes o modos de fusión en la edición de imágenes digitales y los gráficos por computadora se utilizan para determinar cómo se fusionan dos capas entre sí. El modo de fusión predeterminado en la mayoría de las aplicaciones es simplemente oscurecer la capa inferior cubriéndola con lo que esté presente en la capa superior; Debido a que cada píxel tiene valores numéricos también hay muchas otras formas de combinar dos capas.
+
+La mayoría de los programas de edición de gráficos como Adobe Photoshop y GIMP permiten a los usuarios modificar los modos de fusión básicos, por ejemplo, aplicando diferentes niveles de opacidad a la "capa superior".
 
 Blend Modes es la manera en la que P5 mostrara la combinacion de dos colores.
 

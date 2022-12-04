@@ -1,3 +1,5 @@
+
+
 let press = 0;
 let changeCam = 0;
 let angle = 0;
@@ -21,6 +23,9 @@ let cam1, cam2, cam3;
 let cam3Pos, cam4Pos;
 let onCam1 = true, onCam2 = false;
 let dummy;
+
+
+
 function preload() {
     kemonaSilver = loadImage('/assets/image/KemonaPlushSilver.jpg');
     fox_tex = loadImage('/assets/models/fox.png');
@@ -147,13 +152,13 @@ class Player {
     }
 
     movement() {
-        if (keyIsDown(LEFT_ARROW))
+        if (keyIsDown(65))
             this.turn(1);
-        if (keyIsDown(RIGHT_ARROW))
+        if (keyIsDown(68))
             this.turn(-1);
-        if (keyIsDown(UP_ARROW))
+        if (keyIsDown(87))
             this.move(true);
-        if (keyIsDown(DOWN_ARROW))
+        if (keyIsDown(83))
             this.move(false);
     }
 
