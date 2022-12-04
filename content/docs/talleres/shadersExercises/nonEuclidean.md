@@ -15,6 +15,21 @@ Con la ayuda de los shaders en este punto se buscó representar objetos y espaci
 
 Para ejecutar esta sección primero se tomó como base la actividad sugerida por el docente, identificando y completando el cubo con los shaders para formar espacios que no corresponden a un espacio euclidiano. 
 
+{{< details title="non_euclidean.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+// uniforms are defined and sent by the sketch
+uniform sampler2D texture;
+// see emitResolution: https://github.com/VisualComputing/p5.treegl#macros
+uniform vec2 u_resolution;
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / u_resolution; // normalized pixel coordinates. gl_FragCoord (Screen Space), u_resolution (Screen Space)
+  gl_FragColor = texture2D(texture, vec2(uv.x, 1.0 - uv.y)); // Mapping texels to screen pixels. Flip Y axis.
+}
+```
+{{< /details >}}
 {{< details title="nonEuclidean.js" open=false >}}
 ```js
 
@@ -190,7 +205,7 @@ function draw() {
     endShape(CLOSE);
     pop();
 }
-
+```
 {{< /details >}}
 
 {{< p5-iframe sketch="/sketches/nonEuclidean.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" lib2="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js" width="625" height="625" >}}
@@ -204,6 +219,21 @@ En esta etapa podemos ver un portal en la mitad de la escena, si bien a primera 
 
 En esta figura se proyecta un shader que nos permite, a modo de puerta, visualizar lo que está detrás del portal.
 
+{{< details title="portal.frag" open=false >}}
+```GLSL
+precision mediump float;
+
+// uniforms are defined and sent by the sketch
+uniform sampler2D texture;
+// see emitResolution: https://github.com/VisualComputing/p5.treegl#macros
+uniform vec2 u_resolution;
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / u_resolution; // normalized pixel coordinates. gl_FragCoord (Screen Space), u_resolution (Screen Space)
+  gl_FragColor = texture2D(texture, vec2(uv.x, 1.0 - uv.y)); // Mapping texels to screen pixels. Flip Y axis.
+}
+```
+{{< /details >}}
 {{< details title="portalShaderV1.js" open=false >}}
 ```js
 
@@ -504,7 +534,7 @@ function camFovCoordinates(radio, posVec, angle, hy, chy) {
     let radioCam = -10;
     return { xp: (posVec.x + (radioCam * vecAngle.x)), yp: posVec.y + hy, zp: (posVec.z + (radioCam * vecAngle.y)), xc: (posVec.x + (radio * vecAngle.x)), yc: posVec.y + chy, zc: (posVec.z + (radio * vecAngle.y)), xn: 0, yn: 1, zn: 0 };
 }
-
+```
 {{< /details >}}
 
 {{< details "Comandos" >}}
@@ -519,6 +549,7 @@ function camFovCoordinates(radio, posVec, angle, hy, chy) {
 
 
 {{< p5-iframe sketch="/sketches/portalShaderV1.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" lib2="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js" width="925" height="925" >}}
+
 
 ## Continuar en <a href="../portalShaders/">Portal con shaders</a>
 
