@@ -1,14 +1,187 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Espacios No Euclideanos # Con la ayuda de los shader se busca representar objetos que burlar las conceptos geometricos basicos que estamos acustumbrados a ver en la realidad
-Portal Shaders # Portal Shaders Dos Portales # Portal Shaders Con Múltiples reflejos # Referencias
-https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/ https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Espacios No Euclideanos # Con la ayuda de los shader se busca representar objetos que burlar las conceptos geometricos basicos que estamos acustumbrados a ver en la realidad
-Portal Shaders # Portal Shaders Dos Portales # Portal Shaders Con Múltiples reflejos # Referencias
-https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/ https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana"><meta property="og:type" content="article"><meta property="og:url" content="https://jussilvaca.github.io/docs/talleres/shadersExercises/nonEuclidean/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-12-03T22:27:34-05:00"><title>Non Euclidean | Talleres Compuvisual</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.8e4524bfd3f4a117bd7825b821c16bbe47d6131cde89eaf45425be38ee5c3a61.js integrity="sha256-jkUkv9P0oRe9eCW4IcFrvkfWExzeier0VCW+OO5cOmE=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Espacios No Euclideanos # Se denomina geometría no euclidiana a cualquier sistema formal de geometría cuyos postulados y proposiciones difieren en algún asunto de los establecidos por Euclides en su tratado Elementos. No existe un solo sistema de geometría no euclídea, sino muchos, aunque si se restringe la discusión a espacios homogéneos, en los que la curvatura del espacio es la misma en cada punto.
+La geometría euclidiana satisface los cinco postulados de Euclides y tiene curvatura cero (es decir se supone en un espacio plano por lo que la suma de los tres ángulos interiores de un triángulo da siempre 180°)."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Espacios No Euclideanos # Se denomina geometría no euclidiana a cualquier sistema formal de geometría cuyos postulados y proposiciones difieren en algún asunto de los establecidos por Euclides en su tratado Elementos. No existe un solo sistema de geometría no euclídea, sino muchos, aunque si se restringe la discusión a espacios homogéneos, en los que la curvatura del espacio es la misma en cada punto.
+La geometría euclidiana satisface los cinco postulados de Euclides y tiene curvatura cero (es decir se supone en un espacio plano por lo que la suma de los tres ángulos interiores de un triángulo da siempre 180°)."><meta property="og:type" content="article"><meta property="og:url" content="https://jussilvaca.github.io/docs/talleres/shadersExercises/nonEuclidean/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-12-04T03:32:48-05:00"><title>Non Euclidean | Talleres Compuvisual</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.3171e6efc6465a93203cedea49a2a3905e80310d72a454dbb1c1ab0473d5d7a3.js integrity="sha256-MXHm78ZGWpMgPO3qSaKjkF6AMQ1ypFTbscGrBHPV16M=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Talleres Compuvisual</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>Talleres</span><ul><li><a href=/docs/talleres/ilusiones/>Ilusiones</a></li><li><a href=/docs/talleres/portal/>Portal</a></li><li><input type=checkbox id=section-20254d110ff8452ca0de0eeedce0e13b class=toggle checked>
-<label for=section-20254d110ff8452ca0de0eeedce0e13b class="flex justify-between"><a href=/docs/talleres/shadersExercises/>Shaders Exercises</a></label><ul><li><a href=/docs/talleres/shadersExercises/blendModes/>Blend Modes</a></li><li><a href=/docs/talleres/shadersExercises/nonEuclidean/ class=active>Non Euclidean</a></li><li><a href=/docs/talleres/shadersExercises/spatialCoherence/>Spatial Coherence</a></li><li><a href=/docs/talleres/shadersExercises/texturing/>Texturing</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+<label for=section-20254d110ff8452ca0de0eeedce0e13b class="flex justify-between"><a href=/docs/talleres/shadersExercises/>Shaders Exercises</a></label><ul><li><a href=/docs/talleres/shadersExercises/blendModes/>Blend Modes</a></li><li><a href=/docs/talleres/shadersExercises/nonEuclidean/ class=active>Non Euclidean</a></li><li><a href=/docs/talleres/shadersExercises/portalShaders/>Portal Shaders</a></li><li><a href=/docs/talleres/shadersExercises/spatialCoherence/>Spatial Coherence</a></li><li><a href=/docs/talleres/shadersExercises/texturing/>Texturing</a></li></ul></li></ul></li></ul><ul><li><a href=/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Non Euclidean</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#espacios-no-euclideanos>Espacios No Euclideanos</a></li><li><a href=#portal-shaders>Portal Shaders</a></li><li><a href=#portal-shaders-dos-portales>Portal Shaders Dos Portales</a></li><li><a href=#portal-shaders-con-múltiples-reflejos>Portal Shaders Con Múltiples reflejos</a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=espacios-no-euclideanos>Espacios No Euclideanos
-<a class=anchor href=#espacios-no-euclideanos>#</a></h2><p>Con la ayuda de los shader se busca representar objetos que burlar las conceptos geometricos basicos que estamos acustumbrados a ver en la realidad</p><iframe id=nonEuclidean style=width:625px;height:625px srcdoc="
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#espacios-no-euclideanos>Espacios No Euclideanos</a></li><li><a href=#ejemplo-base>Ejemplo base</a></li><li><a href=#portal-shaders>Portal Shaders</a></li><li><a href=#continuar-en-a-hrefportalshadersportal-con-shadersa>Continuar en <a href=../portalShaders/>Portal con shaders</a></a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=espacios-no-euclideanos>Espacios No Euclideanos
+<a class=anchor href=#espacios-no-euclideanos>#</a></h2><p>Se denomina geometría no euclidiana a cualquier sistema formal de geometría cuyos postulados y proposiciones difieren en algún asunto de los establecidos por Euclides en su tratado Elementos.
+No existe un solo sistema de geometría no euclídea, sino muchos, aunque si se restringe la discusión a espacios homogéneos, en los que la curvatura del espacio es la misma en cada punto.</p><p>La geometría euclidiana satisface los cinco postulados de Euclides y tiene curvatura cero (es decir se supone en un espacio plano por lo que la suma de los tres ángulos interiores de un triángulo da siempre 180°).</p><p>Con la ayuda de los shaders en este punto se buscó representar objetos y espacios que de alguna manera burlen los conceptos geométricos básicos a los que estamos acostumbrados. Distorcionando así nuestra visión de la <strong>realidad</strong> .</p><h2 id=ejemplo-base>Ejemplo base
+<a class=anchor href=#ejemplo-base>#</a></h2><p>Para ejecutar esta sección primero se tomó como base la actividad sugerida por el docente, identificando y completando el cubo con los shaders para formar espacios que no corresponden a un espacio euclidiano.</p><details><summary>nonEuclidean.js</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>easycam</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>edge</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>80</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>teapot</span>, <span style=color:#a6e22e>bunny</span>, <span style=color:#a6e22e>dog</span>, <span style=color:#a6e22e>fox</span>, <span style=color:#a6e22e>cow</span>, <span style=color:#a6e22e>cup</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>teapotTex</span>, <span style=color:#a6e22e>bunnyTex</span>, <span style=color:#a6e22e>dogTex</span>, <span style=color:#a6e22e>foxTex</span>, <span style=color:#a6e22e>cowTex</span>, <span style=color:#a6e22e>cupTex</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>texShader</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// no varyings need to be emitted from the vertex shader
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/assets/shader/non_euclidean.frag&#39;</span>,
+</span></span><span style=display:flex><span>        { <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span> });
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapot</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/teapot.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunny</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/bunny.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dog</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/dog.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fox</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/fox.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cow</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/cow.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cup</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/cup.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>600</span>, <span style=color:#ae81ff>600</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// no need to normalize the texture
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// textureMode(NORMAL);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>texShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// resolution will be used to sample the offscreen textures
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>emitResolution</span>(<span style=color:#a6e22e>texShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>easycam</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createEasyCam</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 1. compute current main canvas camera params
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>position</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>treeLocation</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>center</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>p5</span>.<span style=color:#a6e22e>Vector</span>.<span style=color:#a6e22e>add</span>(<span style=color:#a6e22e>position</span>, <span style=color:#a6e22e>treeDisplacement</span>());
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>up</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>treeDisplacement</span>(<span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>j</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// in case the current camera projection params are needed check:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// https://github.com/VisualComputing/p5.treegl#frustum-queries
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// 2. offscreen rendering
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// bunny graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;red&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// most models use positive y-coordinates
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>0.8</span>);<span style=color:#75715e>// only bunny
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>bunny</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>bunnyTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// teapot graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;blue&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>teapot</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>teapotTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// dog graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;green&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>dog</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dogTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// fox graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>fox</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>foxTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// cow graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;orange&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>cow</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cowTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// cup graphics
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#e6db74>&#39;purple&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>scale</span>(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>cup</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cupTex</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 3. main canvas
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// front (+z)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>stroke</span>(<span style=color:#e6db74>&#39;purple&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>strokeWeight</span>(<span style=color:#ae81ff>5</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>bunnyTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// right (+x)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>teapotTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// left (-x)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>dogTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// back (-z)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>foxTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// top (+y)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>cowTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// bottom (-y)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>texShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>cupTex</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>edge</span>, <span style=color:#f92672>+</span><span style=color:#a6e22e>edge</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></details><iframe id=nonEuclidean style=width:625px;height:625px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -25,7 +198,305 @@ https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/ https://e
           </body>
         </html>
       "></iframe><h2 id=portal-shaders>Portal Shaders
-<a class=anchor href=#portal-shaders>#</a></h2><iframe id=portalShaderV1 style=width:925px;height:925px srcdoc="
+<a class=anchor href=#portal-shaders>#</a></h2><p>Como segundo paso se buscó implementar los shaders en el para el desarrollo de los conceptos inspirados por el juego de &ldquo;Portal&rdquo;, consiguiéndo así esta primera versión.</p><p>En esta etapa podemos ver un portal en la mitad de la escena, si bien a primera vista éste portal puede parecer simplemente un arco hueco, al mover la cámara y ubicarla en la parte trasera nos damos cuenta que es una figura circular sólida.</p><p>En esta figura se proyecta un shader que nos permite, a modo de puerta, visualizar lo que está detrás del portal.</p><details><summary>portalShaderV1.js</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>press</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>changeCam</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>angle</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>kemonaSilver</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>player1</span>, <span style=color:#a6e22e>playerOnPortal1</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>fbo1</span>, <span style=color:#a6e22e>fbo1TextPort1</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>portalShader</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// obj models
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>fox</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cat1</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cat2</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e>// texture of models
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>fox_tex</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cat1_tex</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cat2_tex</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>edge</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>80</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cam1</span>, <span style=color:#a6e22e>cam2</span>, <span style=color:#a6e22e>cam3</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cam3Pos</span>, <span style=color:#a6e22e>cam4Pos</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>onCam1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>, <span style=color:#a6e22e>onCam2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>dummy</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>kemonaSilver</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;/assets/image/KemonaPlushSilver.jpg&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fox_tex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;/assets/models/fox.png&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fox</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/fox.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cat1_tex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;/assets/models/cat_plush_01.png&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cat1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/catPlush.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cat2_tex</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;/assets/models/cat_plush_02.png&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cat2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadModel</span>(<span style=color:#e6db74>&#39;/assets/models/catPlush.obj&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>portalShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/assets/shader/portal.frag&#39;</span>, { <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>900</span>, <span style=color:#ae81ff>900</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>dummy</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#ae81ff>900</span>, <span style=color:#ae81ff>900</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo1TextPort1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createGraphics</span>(<span style=color:#ae81ff>900</span>, <span style=color:#ae81ff>900</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>player1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Player</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>600</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>playerOnPortal1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Player</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>portal1Onfbo1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Portal</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>edge</span><span style=color:#f92672>+</span><span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>portal2Onfbo1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Portal</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>portal1Onfbo1</span>.<span style=color:#a6e22e>link</span>(<span style=color:#a6e22e>portal2Onfbo1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam1</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>createCamera</span>(); <span style=color:#75715e>// firts person camera
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Dw</span>.<span style=color:#a6e22e>EasyCam</span>(<span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>_renderer</span>, {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>distance</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>848.5208406737183</span>, <span style=color:#75715e>// scalar (optional)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#a6e22e>center</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>],         <span style=color:#75715e>// vector (optional)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#a6e22e>rotation</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>0.9686568165691878</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.24785495689905887</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.014390494259618537</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.008050200592452867</span>],  <span style=color:#75715e>// quaternion (optional)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    });
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>attachMouseListeners</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>_renderer</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>state2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>getState</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>state_reset</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>state2</span>;   <span style=color:#75715e>// state to use on reset (double-click/tap)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>setViewport</span>([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>900</span>, <span style=color:#ae81ff>900</span>]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>fbo1TextPort1</span>.<span style=color:#a6e22e>createCamera</span>(); <span style=color:#75715e>// camera on portal 1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 1. compute current main canvas camera params
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>position</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>treeLocation</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>center</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>p5</span>.<span style=color:#a6e22e>Vector</span>.<span style=color:#a6e22e>add</span>(<span style=color:#a6e22e>position</span>, <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>treeDisplacement</span>());
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>up</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>treeDisplacement</span>(<span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>j</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo1TextPort1</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>center</span>.<span style=color:#a6e22e>z</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>up</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 2. set scenes
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>scene</span>(<span style=color:#a6e22e>fbo1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>scene</span>(<span style=color:#a6e22e>fbo1TextPort1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>movement</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>fbo1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>playerPos</span> <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>playerOnPortal1</span>.<span style=color:#a6e22e>pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>pos</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>playerOnPortal1</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>a</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>playerOnPortal1</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>fbo1TextPort1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>portal1Onfbo1</span>.<span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>fbo1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>fbo1TextPort1</span>, <span style=color:#a6e22e>portalShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>camCoor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>camFovCoordinates</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>900</span>, <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>pos</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>a</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>60</span>, <span style=color:#ae81ff>40</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cam1</span>.<span style=color:#a6e22e>camera</span>(<span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>xp</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>yp</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>zp</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>xc</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>yc</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>zc</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>xn</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>yn</span>, <span style=color:#a6e22e>camCoor</span>.<span style=color:#a6e22e>zn</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>changeCam</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>onCam1</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>setCanvas</span>(<span style=color:#a6e22e>dummy</span>.<span style=color:#a6e22e>_renderer</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>setCamera</span>(<span style=color:#a6e22e>cam1</span>)
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>onCam1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>onCam2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>onCam2</span>) {
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>cam2</span>.<span style=color:#a6e22e>setCanvas</span>(<span style=color:#a6e22e>fbo1</span>.<span style=color:#a6e22e>_renderer</span>);
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>onCam1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>onCam2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>changeCam</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>press</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>({ <span style=color:#a6e22e>x</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span> });
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>({ <span style=color:#a6e22e>angle</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>a</span> });
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>v</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>p5</span>.<span style=color:#a6e22e>Vector</span>.<span style=color:#a6e22e>fromAngle</span>(<span style=color:#a6e22e>player1</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>({ <span style=color:#a6e22e>x</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>v</span>.<span style=color:#a6e22e>z</span> });
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>press</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>beginHUD</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>image</span>(<span style=color:#a6e22e>fbo1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>endHUD</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Player</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>prevPos</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>copy</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>speed</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>aspeed</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>PI</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>90</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>playerPos</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>playerDis</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>move</span>(<span style=color:#a6e22e>fw</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>prevPos</span>.<span style=color:#a6e22e>set</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>vel</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>p5</span>.<span style=color:#a6e22e>Vector</span>.<span style=color:#a6e22e>fromAngle</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>fw</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>mult</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>speed</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>add</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>x</span>, <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>mult</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>speed</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>add</span>(<span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>x</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>vel</span>.<span style=color:#a6e22e>y</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>600</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>600</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>600</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>600</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>&lt;</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>600</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>600</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>&lt;</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>610</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>610</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>movement</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyIsDown</span>(<span style=color:#ae81ff>65</span>))
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>turn</span>(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyIsDown</span>(<span style=color:#ae81ff>68</span>))
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>turn</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyIsDown</span>(<span style=color:#ae81ff>87</span>))
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>move</span>(<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyIsDown</span>(<span style=color:#ae81ff>83</span>))
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>move</span>(<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>turn</span>(<span style=color:#a6e22e>dir</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>dir</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>aspeed</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>fbo</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span>, <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>y</span>, <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>PI</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>HALF_PI</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>fox_tex</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>fox</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Portal</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>, <span style=color:#a6e22e>a</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createVector</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>len</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>220</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>a</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>portalPos</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>linkedPortal</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>link</span>(<span style=color:#a6e22e>other</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>linkedPortal</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>other</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>other</span>.<span style=color:#a6e22e>linkedPortal</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>check_</span>(<span style=color:#a6e22e>player</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>relativePos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>player</span>.<span style=color:#a6e22e>playerPos</span>.<span style=color:#a6e22e>copy</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>relativePos</span>.<span style=color:#a6e22e>sub</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>portalPos</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>relativePos</span>.<span style=color:#a6e22e>rotate</span>(<span style=color:#f92672>-</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>relativePrevPos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>player</span>.<span style=color:#a6e22e>prevPos</span>.<span style=color:#a6e22e>copy</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>relativePrevPos</span>.<span style=color:#a6e22e>sub</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>portalPos</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>relativePrevPos</span>.<span style=color:#a6e22e>rotate</span>(<span style=color:#f92672>-</span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ((<span style=color:#a6e22e>relativePos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>28</span>) <span style=color:#f92672>!==</span> (<span style=color:#a6e22e>relativePrevPos</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>28</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>abs</span>(<span style=color:#a6e22e>relativePos</span>.<span style=color:#a6e22e>x</span>) <span style=color:#f92672>&lt;</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>len</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Teletransportado&#34;</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>player</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>+=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>linkedPortal</span>.<span style=color:#a6e22e>a</span> <span style=color:#f92672>-</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>check</span>(<span style=color:#a6e22e>player</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>check_</span>(<span style=color:#a6e22e>player</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>render</span>(<span style=color:#a6e22e>fbo</span>, <span style=color:#a6e22e>numberPortal</span>, <span style=color:#a6e22e>texElement</span>, <span style=color:#a6e22e>portalShader</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>()
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>x</span>, <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>y</span>, <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>pos</span>.<span style=color:#a6e22e>z</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>()
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>numberPortal</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>)
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>fill</span>(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>158</span>, <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>circle</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>260</span>)
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>portalShader</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>portalShader</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>emitResolution</span>(<span style=color:#a6e22e>portalShader</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>portalShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>texElement</span>);
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>texElement</span>) {
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>texElement</span>);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>circle</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>250</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>portalPos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>treeLocation</span>(<span style=color:#75715e>/*[0, 0, 0],*/</span> { <span style=color:#a6e22e>from</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>MODEL</span>, <span style=color:#a6e22e>to</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>WORLD</span> });
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>()
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>scene</span>(<span style=color:#a6e22e>fbo</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>120</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>reset</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rectMode</span>(<span style=color:#a6e22e>CENTER</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>ambientLight</span>(<span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>kemonaSilver</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>box</span>(<span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>350</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>cat1_tex</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>cat1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>350</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>350</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateZ</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateY</span>(<span style=color:#a6e22e>angle</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>texture</span>(<span style=color:#a6e22e>cat2_tex</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>cat2</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>push</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>ambientLight</span>(<span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>ambientMaterial</span>(<span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>translate</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>rotateX</span>(<span style=color:#a6e22e>HALF_PI</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>plane</span>(<span style=color:#ae81ff>1200</span>, <span style=color:#ae81ff>1200</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fbo</span>.<span style=color:#a6e22e>pop</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>keyPressed</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyCode</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>67</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>changeCam</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>changeCam</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>keyCode</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>73</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>press</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>press</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>camFovCoordinates</span>(<span style=color:#a6e22e>radio</span>, <span style=color:#a6e22e>posVec</span>, <span style=color:#a6e22e>angle</span>, <span style=color:#a6e22e>hy</span>, <span style=color:#a6e22e>chy</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>vecAngle</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>p5</span>.<span style=color:#a6e22e>Vector</span>.<span style=color:#a6e22e>fromAngle</span>(<span style=color:#a6e22e>angle</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>radioCam</span> <span style=color:#f92672>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>10</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> { <span style=color:#a6e22e>xp</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>radioCam</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>vecAngle</span>.<span style=color:#a6e22e>x</span>)), <span style=color:#a6e22e>yp</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>hy</span>, <span style=color:#a6e22e>zp</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>radioCam</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>vecAngle</span>.<span style=color:#a6e22e>y</span>)), <span style=color:#a6e22e>xc</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>radio</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>vecAngle</span>.<span style=color:#a6e22e>x</span>)), <span style=color:#a6e22e>yc</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>y</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>chy</span>, <span style=color:#a6e22e>zc</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>posVec</span>.<span style=color:#a6e22e>z</span> <span style=color:#f92672>+</span> (<span style=color:#a6e22e>radio</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>vecAngle</span>.<span style=color:#a6e22e>y</span>)), <span style=color:#a6e22e>xn</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>, <span style=color:#a6e22e>yn</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>zn</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span> };
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></details><details><summary>Comandos</summary><div class=markdown-inner><table><thead><tr><th>Tecla</th><th>Descripción</th></tr></thead><tbody><tr><td>W</td><td>Mover hacia adelante</td></tr><tr><td>A</td><td>Girar hacia la izquierda</td></tr><tr><td>D</td><td>Girar hacia la derecha</td></tr><tr><td>S</td><td>Mover hacia atrás</td></tr><tr><td>C</td><td>Cambiar vista primera/tercera persona</td></tr></tbody></table></div></details><iframe id=portalShaderV1 style=width:925px;height:925px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -41,40 +512,7 @@ https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/ https://e
           <body>
           </body>
         </html>
-      "></iframe><h2 id=portal-shaders-dos-portales>Portal Shaders Dos Portales
-<a class=anchor href=#portal-shaders-dos-portales>#</a></h2><iframe id=portalShaderV2 style=width:925px;height:925px srcdoc="
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js></script>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js></script>
-             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
-             <script src=https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js></script> 
-            
-            
-            
-            <script src=/sketches/portalShaderV2.js></script>
-          </head>
-          <body>
-          </body>
-        </html>
-      "></iframe><h2 id=portal-shaders-con-múltiples-reflejos>Portal Shaders Con Múltiples reflejos
-<a class=anchor href=#portal-shaders-con-m%c3%baltiples-reflejos>#</a></h2><iframe id=portalShaderV3 style=width:925px;height:925px srcdoc="
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js></script>
-            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js></script>
-             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
-             <script src=https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.js></script> 
-            
-            
-            
-            <script src=/sketches/portalShaderV3.js></script>
-          </head>
-          <body>
-          </body>
-        </html>
-      "></iframe><p><strong>Referencias</strong></p><p><a href=https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/>https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/</a>
-<a href=https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana>https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana</a></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/jussilvaca/commit/7391a5e86a820e8392f693df2a6b92486785b183 title='Last modified by jussilvaca | December 4, 2022' target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
-<span>December 4, 2022</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#espacios-no-euclideanos>Espacios No Euclideanos</a></li><li><a href=#portal-shaders>Portal Shaders</a></li><li><a href=#portal-shaders-dos-portales>Portal Shaders Dos Portales</a></li><li><a href=#portal-shaders-con-múltiples-reflejos>Portal Shaders Con Múltiples reflejos</a></li></ul></li></ul></nav></div></aside></main></body></html>
+      "></iframe><h2 id=continuar-en-a-hrefportalshadersportal-con-shadersa>Continuar en <a href=../portalShaders/>Portal con shaders</a>
+<a class=anchor href=#continuar-en-a-hrefportalshadersportal-con-shadersa>#</a></h2><p><strong>Referencias</strong></p><p><a href=https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/>https://visualcomputing.github.io/docs/shaders/non-euclidean_geometry/</a>
+<a href=https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana>https://es.wikipedia.org/wiki/Geometr%C3%ADa_no_euclidiana</a></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/jussilvaca/commit/6a6b479df6ef0b662272c394adaf6bb2319240ba title='Last modified by jussilvaca | December 4, 2022' target=_blank rel=noopener><img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>December 4, 2022</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#espacios-no-euclideanos>Espacios No Euclideanos</a></li><li><a href=#ejemplo-base>Ejemplo base</a></li><li><a href=#portal-shaders>Portal Shaders</a></li><li><a href=#continuar-en-a-hrefportalshadersportal-con-shadersa>Continuar en <a href=../portalShaders/>Portal con shaders</a></a></li></ul></li></ul></nav></div></aside></main></body></html>
