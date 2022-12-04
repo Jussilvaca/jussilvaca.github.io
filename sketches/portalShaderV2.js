@@ -18,7 +18,7 @@ let cat2_tex;
 
 let set1 = 0, set2 = 0;
 let starCheck1 = 0, starCheck2 = 0, restart = 0;
-let teleportedFbo1 = false, teleportedFbo2 = false;
+let teleportedFbo1 = false, teleportedFbo2 = true;
 
 let cam1, cam2, cam3, cam4;
 let cam3Pos, cam4Pos;
@@ -75,78 +75,57 @@ function draw() {
         center.x, center.y, center.z,
         up.x, up.y, up.z);
 
-    let position1 = fbo1.treeLocation();
-    let center1 = p5.Vector.add(position1, fbo1.treeDisplacement());
-    let up1 = fbo1.treeDisplacement(Tree.j);
+    fbo1TextPort2.camera(position.x, position.y, position.z,
+        center.x, center.y, center.z,
+        up.x, up.y, up.z);
 
-    fbo1TextPort2.camera(position1.x, position1.y, position1.z,
-        center1.x, center1.y, center1.z,
-        up1.x, up1.y, up1.z);
     // 2. set scenes
     scene(fbo1, 0, 0, 1, 1);
     scene(fbo1TextPort1, 1, 0, 0, 1);
     scene(fbo1TextPort2, 0, 1, 1, 0);
 
+    player1.movement();
+    player1.render(fbo1, 0);
+
     if (teleportedFbo1 && !teleportedFbo2) {
-        player1.movement();
-        player1.render(fbo1);
 
-        restart = 1;
-        // if (abs(player1.playerPos.z) < (abs(portal1Onfbo1.portalPos.z) - 40)) {
-        //     starCheck1 = 1;
-        // }
+        if (abs(player1.playerPos.z) < (abs(portal1Onfbo1.portalPos.z) - 40)) {
+            starCheck1 = 1;
+        }
 
-        // if (abs(player1.playerPos.z) < (abs(portal2Onfbo1.portalPos.z) - 40)) {
-        //     starCheck2 = 1;
-        // }
+        if (abs(player1.playerPos.z) < (abs(portal2Onfbo1.portalPos.z) - 40)) {
+            starCheck2 = 1;
+        }
 
-        // if (starCheck1) {
-        //     teleportedFbo1 = portal1Onfbo1.check(player1)
-        // }
+        if (starCheck1) {
+            teleportedFbo1 = portal1Onfbo1.check(player1)
+        }
 
-        // if (starCheck2) {
-        //     teleportedFbo2 = portal2Onfbo1.check(player1)
-        //     console.log("SSSSSSSSSS");
-        // }
+        if (starCheck2) {
+            teleportedFbo2 = portal2Onfbo1.check(player1)
+        }
     }
 
     if (!teleportedFbo1 && teleportedFbo2) {
-        player1.movement();
-        player1.render(fbo1);
 
-        restart = 1;
-        // console.log("KLAJSHKJALHDAD");
+        if (abs(player1.playerPos.z) < (abs(portal1Onfbo1.portalPos.z) - 40)) {
+            starCheck1 = 1;
+        }
 
-        // if (abs(player1.playerPos.z) < (abs(portal1Onfbo1.portalPos.z) - 40)) {
-        //     starCheck1 = 1;
-        // }
+        if (abs(player1.playerPos.z) < (abs(portal2Onfbo1.portalPos.z) - 40)) {
+            starCheck2 = 1;
+        }
 
-        // if (abs(player1.playerPos.z) < (abs(portal2Onfbo1.portalPos.z) - 40)) {
-        //     starCheck2 = 1;
-        // }
+        if (starCheck1) {
+            teleportedFbo1 = portal1Onfbo1.check(player1)
+        }
 
-        // // if (starCheck1) {
-        // //     teleportedFbo1 = portal1Onfbo1.check(player1)
-        // // }
-
-        // // if (starCheck2) {
-        // //     teleportedFbo2 = portal2Onfbo1.check(player1)
-        // // }
-    }
-
-    if (restart) {
-        set1 = 0;
-        set2 = 0;
-        starCheck1 = 0;
-        starCheck2 = 0;
-        teleportedFbo1 = false;
-        teleportedFbo2 = false;
-        restart = 0;
+        if (starCheck2) {
+            teleportedFbo2 = portal2Onfbo1.check(player1)
+        }
     }
 
     if ((!teleportedFbo1 && !teleportedFbo2)) {
-        player1.movement();
-        player1.render(fbo1);
 
         if (abs(player1.playerPos.z) < (abs(portal1Onfbo1.portalPos.z) - 40)) {
             starCheck1 = 1;
@@ -166,21 +145,21 @@ function draw() {
 
         if (teleportedFbo1) {
             set1 = 1;
-            console.log("teleportedFbo1");
         }
 
         if (teleportedFbo2) {
             set2 = 1;
-            console.log("teleportedFbo2");
         }
 
         if (set1) {
-            player1.pos = portal2Onfbo1.portalPos
+            player1.pos = portal2Onfbo1.portalPos;
+            starCheck2 = 0;
             set1 = 0;
         }
 
         if (set2) {
-            player1.pos = portal1Onfbo1.portalPos
+            player1.pos = portal1Onfbo1.portalPos;
+            starCheck1 = 0;
             set2 = 0;
         }
     }
@@ -294,6 +273,8 @@ class Player {
         fbo.rotateY(HALF_PI);
         fbo.texture(fox_tex);
         fbo.model(fox);
+        this.playerPos = fbo.treeLocation(/*[0, 0, 0],*/ { from: Tree.MODEL, to: Tree.WORLD });
+        this.playerDis = fbo.treeDisplacement(/*[0, 0, 0],*/ { from: Tree.MODEL, to: Tree.WORLD });
         fbo.pop();
         fbo.pop();
     }
